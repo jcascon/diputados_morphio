@@ -12,18 +12,37 @@ page = agent.get(" http://www.congreso.es/portal/page/portal/Congreso/Congreso/D
 #page.links.each do |link|
   #puts link.text
 #end
-#todos los diputados
+#todos los diputados 
+diputados = []
 while true
-
+ diputados.concat(page.links_with(href: /fichaDiputado/))
   page.links_with(href: /fichaDiputado/).each do |link|
-    puts link.text
+   # puts link.text
   end
   next_page=page.link_with(text: /Siguiente/)
   break if next_page ==nil
   page= next_page.click
 end
+#page = agent.get("http://www.congreso.es/portal/page/portal/Congreso/Congreso/Diputados/BusqForm?_piref73_1333155_73_1333154_1333154.next_page=/wc/fichaDiputado?idDiputado=268&idLegislatura=10")
 
-#
+diputados.each do |diputado
+  page =diputado.click
+name = page.search('div.nombre_dip').text
+#mail = page.links_with(href: /mailto/)
+div =  page.search('div#curriculum')
+div.search('a').each do |link|
+  #puts link['href'] if link['herf'] =~/mailto:/
+end
+#email= div.search('a[href*=mailto').text.strip
+email_link= div.search('a[href*=mailto]')
+email=email_link ? email_link.text.strip : ''
+
+puts "'#{name}', #{email}""
+#div.search('a[href*=mailto').text.strip
+end
+
+
+#.nombre
 # # Find somehing on the page using css selectors
 # p page.at('div.content')
 #
