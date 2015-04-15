@@ -1,7 +1,7 @@
 # This is a template for a Ruby scraper on Morph (https://morph.io)
 # including some code snippets below that you should find helpful
 
-# require 'scraperwiki'
+require 'scraperwiki'
 # require 'mechanize'
 #
 # agent = Mechanize.new
@@ -13,7 +13,7 @@
 # p page.at('div.content')
 #
 # # Write out to the sqlite database using scraperwiki library
-# ScraperWiki.save_sqlite(["name"], {"name" => "susan", "occupation" => "software developer"})
+ScraperWiki.save_sqlite(["name"], {"name" => "juan", "occupation" => "CDO ABC.es"})
 #
 # # An arbitrary query against the database
 # ScraperWiki.select("* from data where 'name'='peter'")
