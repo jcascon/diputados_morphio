@@ -8,7 +8,12 @@ agent = Mechanize.new
 #
 # # Read in a page
 page = agent.get(" http://www.congreso.es/portal/page/portal/Congreso/Congreso/Diputados?_piref73_1333056_73_1333049_1333049.next_page=/wc/menuAbecedarioInicio&tipoBusqueda=completo&idLegislatura=10")
-page.links.each do |link|
+#todos los enlaces de una pagina
+#page.links.each do |link|
+  #puts link.text
+#end
+#todos los diputados
+page.links_width(href: /fichadiputado/).each do |link|
   puts link.text
 end
 #
