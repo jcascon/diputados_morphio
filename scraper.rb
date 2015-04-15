@@ -13,7 +13,7 @@ page = agent.get(" http://www.congreso.es/portal/page/portal/Congreso/Congreso/D
   #puts link.text
 #end
 #todos los diputados
-page.links_width(href: /fichadiputado/).each do |link|
+page.links_with(href: /fichadiputado/).each do |link|
   puts link.text
 end
 #
